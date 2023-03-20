@@ -32,9 +32,9 @@ public class Editor {
         return true;
     }
 
-    public boolean crearPuerta(Ambiente ambiente1, Ambiente ambiente2) {
-        
-        return true;
+    public boolean crearPuerta(String entornoOrigen, String entornoDestino) {
+        return escenarioPrincipal.agregarPuerta(entornoOrigen,entornoDestino);
+        // return false;
     }
 
     public boolean agregarEntorno(String escenarioDestino, String entornoOrigen){
@@ -44,7 +44,7 @@ public class Editor {
         return estaAgregado;
     }
 
-    public Escenario getEscenarioPrinciapl(){
+    public Escenario getEscenarioPrincipal(){
         return escenarioPrincipal;
     }
 

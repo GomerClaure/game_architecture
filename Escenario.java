@@ -1,24 +1,33 @@
 import java.util.ArrayList;
 
 public class Escenario extends Entorno {
-    ArrayList <Entorno> espacios;
+    ArrayList <Entorno> entornos;
     // ArrayList <Escenario> escenarios;
     public Escenario(String nombreId) {
         super(nombreId);
-        espacios = new ArrayList<>();
+        entornos = new ArrayList<>();
     }
-
+    public boolean agregarPuerta(String entornoOrigen,String entornoDestino){
+        Entorno [] entornosVecinos =  buscarEntornosEnVecinos(entornoOrigen,entornoDestino);
+        if(entornosVecinos[0] != null && entornosVecinos[1] != null){
+           return entornosVecinos[0].agregarPuerta(entornosVecinos[1]);
+        }
+        return false;
+    }
     @Override
-    public Boolean agregarA(String espacioId, Entorno espacioDestino) {
+    public Boolean agregarA(String entornoId, Entorno entornoDestino) {
         boolean seAgrego = false;
-        if(espacioDestino != null){
-            if(nombreId == espacioId){
-                espacios.add(espacioDestino);
+        if(entornoDestino != null){
+            if(nombreId == entornoId){
+                entornos.add(entornoDestino);
+                if(!sonDelMismoTipo(entornos)){
+                    entornos.remove(entornos.size()-1);
+                }
                 seAgrego = true;
             }else{
-                Entorno escenario = buscarEscenario(espacioId);
+                Entorno escenario = buscarEntorno(entornoId);
                 if(escenario != null){
-                     seAgrego = escenario. agregarA(espacioId, espacioDestino);
+                     seAgrego = escenario. agregarA(entornoId, entornoDestino);
                 }
             }
         }else{
@@ -27,33 +36,40 @@ public class Escenario extends Entorno {
         return seAgrego;
     }
     
-    @Override
-    public Puerta agregarPuertaEntre(String espacioId1, String espacioId2) {
-        return null;
-    }
-
-    @Override
-    public Entorno buscarAmbiente(String espacioId){
-        Entorno ambienteBuscado = null;
-        for (int i = 0; i < espacios.size(); i++) {
-            ambienteBuscado = espacios.get(i).buscarAmbiente(espacioId);
-            if( ambienteBuscado != null){break;}
+    public Entorno buscarEntorno(String entornoId){
+        Entorno entornoBuscado = null;
+        entornoBuscado = entornoId == nombreId ? this: null;
+        for (int i = 0; i < entornos.size() && entornoBuscado == null; i++) {
+            entornoBuscado = entornos.get(i).buscarEntorno(entornoId);
+            if( entornoBuscado != null){break;}
         }
-        return ambienteBuscado;
+        return entornoBuscado;
     }
-
-    @Override
-    public Entorno buscarEscenario(String espacioId){
-        Entorno escenarioBuscado = null;
-        if (nombreId == espacioId) {
-            escenarioBuscado = this;
-        }else{
-            for (int i = 0; i < espacios.size(); i++) {
-                escenarioBuscado = espacios.get(i).buscarEscenario(espacioId);
-                if( escenarioBuscado != null){break;}
+    public Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino){
+        Entorno entornoBuscadoOrigen = null;
+        Entorno entornoBuscadoDestino = null;
+        Entorno [] entornosVecinos = new Entorno[2];
+        for (int i = 0; i < entornos.size(); i++) {
+            for (int e = 0; e < entornos.size(); e++) {
+                if( entornoOrigen == entornos.get(e).nombreId){
+                    entornosVecinos[0] = entornos.get(e);
+                }
+                if( entornoDestino == entornos.get(e).nombreId){
+                    entornosVecinos[1] = entornos.get(e);
+                }
+            }
+            if(entornosVecinos[0] == null && entornosVecinos[1] == null){
+                entornosVecinos = entornos.get(i).buscarEntornosEnVecinos(entornoOrigen, entornoDestino);
+            }else{
+                if(entornosVecinos[0] == null || entornosVecinos[1] == null){
+                    entornosVecinos = new Entorno[2];
+                }else{
+                    break; 
+                }
+                
             }
         }
-        return escenarioBuscado;
+        return entornosVecinos;
     }
 
 }
