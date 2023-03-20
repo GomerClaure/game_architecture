@@ -1,19 +1,34 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
 public class Editor {
-    HashMap<String,Escenario> almacenTemporalEscenario;
-    HashMap<String,Ambiente> almacenTemporalAmbiente;
-    ArrayList<Escenario> escenarios;
+    private Escenario escenarioPrincipal;
+    private HashMap<String,Entorno> almacenTemporal;
+    private String nombreEscenarioPrincipal;
 
+    public Editor(){
+        nombreEscenarioPrincipal = "escenarioPrincipal";
+        escenarioPrincipal = new Escenario(nombreEscenarioPrincipal);
+        almacenTemporal = new HashMap<>();
+    }
     public boolean crearEscenario(String name) {
-        almacenTemporalEscenario.put(name, new Escenario());
+        try {
+            almacenTemporal.put(name, new Escenario(name));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return false;
+        }
+        
         return true;
     }
 
     public boolean crearAmbiente(String name) {
-        almacenTemporalAmbiente.put(name, new Ambiente());
+        try {
+            almacenTemporal.put(name, new Ambiente(name));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return false;
+        }
         return true;
     }
 
@@ -22,23 +37,29 @@ public class Editor {
         return true;
     }
 
-    public boolean agregarEscenario(String escenarioDestino, String escenario){
-        return true;
+    public boolean agregarEntorno(String escenarioDestino, String entornoOrigen){
+        Entorno escenario = almacenTemporal.get(entornoOrigen);
+        boolean estaAgregado = escenarioPrincipal.agregarA(escenarioDestino, escenario);
+        if(estaAgregado){almacenTemporal.remove(entornoOrigen);}
+        return estaAgregado;
     }
 
-    public boolean agregarEscenario(String escenario){
-        try {
-            escenarios.add(almacenTemporalEscenario.get(escenario));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public Escenario getEscenarioPrinciapl(){
+        return escenarioPrincipal;
+    }
+
+    public boolean agregarEntorno(String entornoOrigen){
+        Entorno escenario = almacenTemporal.get(entornoOrigen);
+        boolean estaAgregado = escenarioPrincipal.agregarA(nombreEscenarioPrincipal, escenario);
+        if(estaAgregado){almacenTemporal.remove(entornoOrigen);}
+        return estaAgregado;
     }
 
     public  Set<String> getEscenariosLibres(){
-        return almacenTemporalEscenario.keySet();
+        return almacenTemporal.keySet();
     } 
+
     public  Set<String> getAmbientesLibres(){
-        return almacenTemporalEscenario.keySet();
+        return almacenTemporal.keySet();
     }
 }
