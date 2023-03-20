@@ -33,7 +33,7 @@ public class Editor {
     }
 
     public boolean crearPuerta(String entornoOrigen, String entornoDestino) {
-        return escenarioPrincipal.agregarPuerta(entornoOrigen,entornoDestino);
+        return escenarioPrincipal.agregarPuerta(entornoOrigen,entornoDestino, 1, 2);
         // return false;
     }
 

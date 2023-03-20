@@ -20,13 +20,13 @@ public abstract class Entorno {
         return sonDelMismoTipo;
         
     }
-    public Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino) {
+    protected Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino) {
         return new Entorno[2];
     }
     
-    // public Entorno irA(String ambienteDestino){
-    //     puertas.get(0).cambiarConRetorno();
-    // }
+    public Entorno salirPuerta(int posx, int posy){
+        return puertas.get(0).salirSinRetorno();
+    }
 
     public Boolean agregarA(String espacioIdDestino, Entorno espacio){
         return false;
@@ -36,9 +36,9 @@ public abstract class Entorno {
         return espacioId == nombreId ? this: null;
     }
 
-    public boolean agregarPuerta(Entorno entornoDestino){
+    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
         if (entornoDestino != null) {
-            puertas.add(new Puerta(this, entornoDestino));
+            puertas.add(new Puerta(this, entornoDestino, posx, posy));
             return true;
         }
         return false;

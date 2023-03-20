@@ -7,10 +7,10 @@ public class Escenario extends Entorno {
         super(nombreId);
         entornos = new ArrayList<>();
     }
-    public boolean agregarPuerta(String entornoOrigen,String entornoDestino){
+    public boolean agregarPuerta(String entornoOrigen,String entornoDestino, int posx, int posy){
         Entorno [] entornosVecinos =  buscarEntornosEnVecinos(entornoOrigen,entornoDestino);
         if(entornosVecinos[0] != null && entornosVecinos[1] != null){
-           return entornosVecinos[0].agregarPuerta(entornosVecinos[1]);
+           return entornosVecinos[0].agregarPuerta(entornosVecinos[1], posx, posy);
         }
         return false;
     }
@@ -45,9 +45,8 @@ public class Escenario extends Entorno {
         }
         return entornoBuscado;
     }
-    public Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino){
-        Entorno entornoBuscadoOrigen = null;
-        Entorno entornoBuscadoDestino = null;
+
+    protected Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino){
         Entorno [] entornosVecinos = new Entorno[2];
         for (int i = 0; i < entornos.size(); i++) {
             for (int e = 0; e < entornos.size(); e++) {
