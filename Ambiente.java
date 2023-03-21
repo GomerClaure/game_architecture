@@ -1,19 +1,22 @@
+import java.util.ArrayList;
 
 public class Ambiente extends Entorno  {
+    ArrayList<Puerta> puertas;
     public Ambiente(String nombreId) {
         super(nombreId);
-        //TODO Auto-generated constructor stub
+        puertas = new ArrayList<>();
     }
 
+    public Entorno salirPuerta(int posx, int posy){
+        return puertas.get(0).salirSinRetorno();
+    }
     
+    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
+        if (entornoDestino != null) {
+            puertas.add(new Puerta(this, entornoDestino, posx, posy));
+            return true;
+        }
+        return false;
+    }
 
-   
-
-    
-    
-    // @Override
-    // public Espacio crear() {
-    //     // TODO Auto-generated method stub
-    //     return null;
-    // }
 }

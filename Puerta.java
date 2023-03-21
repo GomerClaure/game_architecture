@@ -10,17 +10,6 @@ public class Puerta {
         puertaY = posy;
     }
 
-    // public Entorno salirConRetorno(){
-    //     // if(true){
-    //     if(entornoDestino.agregarPuerta(entornoOrigen)){
-    //         return entornoDestino;
-    //     }else{
-    //         System.out.println("Error al cambiar de puerta");
-    //         return null;
-    //     }
-        
-    // }
-
     public Entorno salirSinRetorno(){
         return entornoDestino;
     }

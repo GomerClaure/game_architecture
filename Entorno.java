@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public abstract class Entorno {
     String nombreId;
-    ArrayList<Puerta> puertas;
+    
     // ArrayList<Entorno> destinos;
     public Entorno(String nombreId) {
         this.nombreId = nombreId;
-        puertas = new ArrayList<>();
+        
     }
 
     
@@ -20,13 +20,16 @@ public abstract class Entorno {
         return sonDelMismoTipo;
         
     }
+
+    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
+        return false;
+    }
+
     protected Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino) {
         return new Entorno[2];
     }
     
-    public Entorno salirPuerta(int posx, int posy){
-        return puertas.get(0).salirSinRetorno();
-    }
+    
 
     public Boolean agregarA(String espacioIdDestino, Entorno espacio){
         return false;
@@ -36,11 +39,5 @@ public abstract class Entorno {
         return espacioId == nombreId ? this: null;
     }
 
-    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
-        if (entornoDestino != null) {
-            puertas.add(new Puerta(this, entornoDestino, posx, posy));
-            return true;
-        }
-        return false;
-    }
+    
 }
