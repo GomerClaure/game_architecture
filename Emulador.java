@@ -19,7 +19,7 @@ public class Emulador {
      }
 
      public String getDatosAmbiente(){
-        return"Nombre de Ambiente: "+ ambienteActualEmulado.nombreId+"\n"+ambienteActualEmulado.getPuertas();
+        return"Estas en el Ambiente: "+ ambienteActualEmulado.nombreId+"\n"+ambienteActualEmulado.getPuertas();
      }
 
 }

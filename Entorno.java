@@ -2,13 +2,22 @@ import java.util.ArrayList;
 
 public abstract class Entorno {
     String nombreId;
+    ArrayList<Puerta> puertas;
     
     // ArrayList<Entorno> destinos;
     public Entorno(String nombreId) {
         this.nombreId = nombreId;
+        puertas = new ArrayList<>();
         
     }
 
+    public boolean agregarPuerta(Entorno entornoDestino, String nombreId){
+        if (entornoDestino != null) {
+            puertas.add(new Puerta(this, entornoDestino, nombreId));
+            return true;
+        }
+        return false;
+    }
     
     protected boolean sonDelMismoTipo(ArrayList <Entorno> entornos){
         boolean sonDelMismoTipo = true;
@@ -21,19 +30,11 @@ public abstract class Entorno {
         
     }
 
-    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
-        return false;
-    }
-
     protected Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino) {
         return new Entorno[2];
     }
     
-    
-
-    public Boolean agregarA(String espacioIdDestino, Entorno espacio){
-        return false;
-    }
+    public abstract Boolean agregarA(String espacioIdDestino, Entorno espacio);
 
     public Entorno buscarEntorno(String espacioId){
         return espacioId == nombreId ? this: null;

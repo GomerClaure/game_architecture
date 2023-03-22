@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
 public class Ambiente extends Entorno  {
-    ArrayList<Puerta> puertas;
+    
     public Ambiente(String nombreId) {
         super(nombreId);
-        puertas = new ArrayList<>();
     }
 
     public Entorno salirPuerta(String nombreId){
@@ -16,13 +15,7 @@ public class Ambiente extends Entorno  {
         return null;
     }
     
-    public boolean agregarPuerta(Entorno entornoDestino, String nombreId){
-        if (entornoDestino != null) {
-            puertas.add(new Puerta(this, entornoDestino, nombreId));
-            return true;
-        }
-        return false;
-    }
+    
 
     @Override
     public String getName(){
@@ -36,6 +29,11 @@ public class Ambiente extends Entorno  {
             todasLasPuertas += puerta.toString();
         }
         return todasLasPuertas;
+    }
+
+    @Override
+    public Boolean agregarA(String espacioIdDestino, Entorno espacio) {
+        return false;
     }
 
 }

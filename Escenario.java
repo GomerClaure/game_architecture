@@ -7,10 +7,11 @@ public class Escenario extends Entorno {
         super(nombreId);
         entornos = new ArrayList<>();
     }
-    public boolean agregarPuerta(String entornoOrigen,String entornoDestino, int posx, int posy){
+
+    public boolean agregarPuerta(String entornoOrigen,String entornoDestino, String nombreId){
         Entorno [] entornosVecinos =  buscarEntornosEnVecinos(entornoOrigen,entornoDestino);
         if(entornosVecinos[0] != null && entornosVecinos[1] != null){
-           return entornosVecinos[0].agregarPuerta(entornosVecinos[1], posx, posy);
+           return entornosVecinos[0].agregarPuerta(entornosVecinos[1], nombreId);
         }
         return false;
     }
@@ -22,8 +23,9 @@ public class Escenario extends Entorno {
                 entornos.add(entornoDestino);
                 if(!sonDelMismoTipo(entornos)){
                     entornos.remove(entornos.size()-1);
+                }else{
+                    seAgrego = true;
                 }
-                seAgrego = true;
             }else{
                 Entorno escenario = buscarEntorno(entornoId);
                 if(escenario != null){
@@ -50,8 +52,12 @@ public class Escenario extends Entorno {
         Entorno ambiente = null;
         for (Entorno entorno : entornos) {
             ambiente = entorno.getPrimerAmbiente();
+            if (ambiente!=null) {
+                break;
+            }
             if (entorno instanceof Ambiente) {
                 ambiente = entorno;
+                break;
             }
         }
         return ambiente;
@@ -86,5 +92,6 @@ public class Escenario extends Entorno {
     public String getName(){
         return "Escenario: "+nombreId;
     }
+
 
 }
