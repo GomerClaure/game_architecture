@@ -46,6 +46,17 @@ public class Escenario extends Entorno {
         return entornoBuscado;
     }
 
+    public Entorno getPrimerAmbiente(){
+        Entorno ambiente = null;
+        for (Entorno entorno : entornos) {
+            ambiente = entorno.getPrimerAmbiente();
+            if (entorno instanceof Ambiente) {
+                ambiente = entorno;
+            }
+        }
+        return ambiente;
+    }
+
     protected Entorno [] buscarEntornosEnVecinos(String entornoOrigen, String entornoDestino){
         Entorno [] entornosVecinos = new Entorno[2];
         for (int i = 0; i < entornos.size(); i++) {
@@ -69,6 +80,11 @@ public class Escenario extends Entorno {
             }
         }
         return entornosVecinos;
+    }
+
+    @Override
+    public String getName(){
+        return "Escenario: "+nombreId;
     }
 
 }

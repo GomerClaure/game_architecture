@@ -21,8 +21,10 @@ public class Main {
         System.out.println(editor.agregarEntorno("escenario3","ambiente4"));
         System.out.println("AgregarPuertas:");
         System.out.println(editor.crearPuerta("ambiente4", "ambiente3"));
-        System.out.println(editor.crearPuerta("ambiente1", "ambiente2"));
-        // Escenario escenaP = editor.getEscenarioPrincipal(); 
+        System.out.println(editor.crearPuerta("ambiente2", "ambiente1"));
+        Escenario escenaP = editor.getEscenarioPrincipal(); 
+        Emulador emulador = new Emulador( escenaP);
+        System.out.println(emulador.getDatosAmbiente());
         // Entorno [] vecinos = escenaP.buscarEntornosEnVecinos("ambiente1", "ambiente3");
         System.out.println("TodoOK!!!");
     }

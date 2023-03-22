@@ -7,16 +7,35 @@ public class Ambiente extends Entorno  {
         puertas = new ArrayList<>();
     }
 
-    public Entorno salirPuerta(int posx, int posy){
-        return puertas.get(0).salirSinRetorno();
+    public Entorno salirPuerta(String nombreId){
+        for (Puerta puerta : puertas) {
+            if (puerta.estaEnLaPuerta(nombreId)) {
+                return puerta.salirSinRetorno();
+            }
+        }
+        return null;
     }
     
-    public boolean agregarPuerta(Entorno entornoDestino,int posx, int posy){
+    public boolean agregarPuerta(Entorno entornoDestino, String nombreId){
         if (entornoDestino != null) {
-            puertas.add(new Puerta(this, entornoDestino, posx, posy));
+            puertas.add(new Puerta(this, entornoDestino, nombreId));
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String getName(){
+        return "Ambiente: "+nombreId;
+    }
+
+    @Override
+    public String getPuertas(){
+        String todasLasPuertas = "";
+        for (Puerta puerta : puertas) {
+            todasLasPuertas += puerta.toString();
+        }
+        return todasLasPuertas;
     }
 
 }

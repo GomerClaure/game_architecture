@@ -39,5 +39,19 @@ public abstract class Entorno {
         return espacioId == nombreId ? this: null;
     }
 
+    public abstract String getName();
+
+    public Entorno salirPuerta(String nombreId){
+        return null;
+    }
+
+    public String getPuertas(){
+        return "";
+    }
+
+    public Entorno getPrimerAmbiente(){
+        return this;
+    }
+
     
 }
