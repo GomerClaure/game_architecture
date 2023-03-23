@@ -53,6 +53,9 @@ public class Main {
         System.out.println(emulador.moverA("puerta6"));
         System.out.println(emulador.getDatosAmbiente());
         System.out.println(emulador.moverA("puerta7"));
+        System.out.println(emulador.getDatosAmbiente());
+        System.out.println(emulador.moverA("puerta1"));
+        System.out.println(emulador.getDatosAmbiente());
 
         System.out.println("TodoOK!!!");
     }

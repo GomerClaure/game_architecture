@@ -16,20 +16,20 @@ public class Escenario extends Entorno {
         return false;
     }
     @Override
-    public Boolean agregarA(String entornoId, Entorno entornoDestino) {
+    public Boolean agregarA(String entornoDestino, Entorno entornoNuevo) {
         boolean seAgrego = false;
-        if(entornoDestino != null){
-            if(nombreId == entornoId){
-                entornos.add(entornoDestino);
+        if(entornoNuevo != null){
+            if(nombreId == entornoDestino){
+                entornos.add(entornoNuevo);
                 if(!sonDelMismoTipo(entornos)){
                     entornos.remove(entornos.size()-1);
                 }else{
                     seAgrego = true;
                 }
             }else{
-                Entorno escenario = buscarEntorno(entornoId);
+                Entorno escenario = buscarEntorno(entornoDestino);
                 if(escenario != null){
-                     seAgrego = escenario. agregarA(entornoId, entornoDestino);
+                     seAgrego = escenario. agregarA(entornoDestino, entornoNuevo);
                 }
             }
         }else{

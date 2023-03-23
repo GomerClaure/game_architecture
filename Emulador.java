@@ -10,8 +10,8 @@ public class Emulador {
         ambienteActualEmulado = escenarioEmulado.getPrimerAmbiente();
      }
 
-     public boolean moverA(String ambienteId){
-        Entorno ambienteDestino = ambienteActualEmulado.salirPuerta(ambienteId);
+     public boolean moverA(String puertaId){
+        Entorno ambienteDestino = ambienteActualEmulado.salirPuerta(puertaId);
         if (ambienteDestino != null) {
             ambienteActualEmulado = ambienteDestino;
         }
