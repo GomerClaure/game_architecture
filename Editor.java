@@ -37,10 +37,10 @@ public class Editor {
         // return false;
     }
 
-    public boolean agregarEntorno(String escenarioDestino, String entornoOrigen){
-        Entorno escenario = almacenTemporal.get(entornoOrigen);
+    public boolean agregarEntorno(String escenarioDestino, String entornoNuevo){
+        Entorno escenario = almacenTemporal.get(entornoNuevo);
         boolean estaAgregado = escenarioPrincipal.agregarA(escenarioDestino, escenario);
-        if(estaAgregado){almacenTemporal.remove(entornoOrigen);}
+        if(estaAgregado){almacenTemporal.remove(entornoNuevo);}
         return estaAgregado;
     }
 
@@ -48,18 +48,18 @@ public class Editor {
         return escenarioPrincipal;
     }
 
-    public boolean agregarEntorno(String entornoOrigen){
-        Entorno escenario = almacenTemporal.get(entornoOrigen);
+    public boolean agregarEntorno(String entornoNuevo){
+        Entorno escenario = almacenTemporal.get(entornoNuevo);
         boolean estaAgregado = escenarioPrincipal.agregarA(nombreEscenarioPrincipal, escenario);
-        if(estaAgregado){almacenTemporal.remove(entornoOrigen);}
+        if(estaAgregado){almacenTemporal.remove(entornoNuevo);}
         return estaAgregado;
     }
 
-    public  Set<String> getEscenariosLibres(){
-        return almacenTemporal.keySet();
-    } 
+    // public  Set<String> getEscenariosLibres(){
+    //     return almacenTemporal.keySet();
+    // } 
 
-    public  Set<String> getAmbientesLibres(){
-        return almacenTemporal.keySet();
-    }
+    // public  Set<String> getAmbientesLibres(){
+    //     return almacenTemporal.keySet();
+    // }
 }

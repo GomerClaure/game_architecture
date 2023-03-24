@@ -4,7 +4,6 @@ public abstract class Entorno {
     String nombreId;
     ArrayList<Puerta> puertas;
     
-    // ArrayList<Entorno> destinos;
     public Entorno(String nombreId) {
         this.nombreId = nombreId;
         puertas = new ArrayList<>();
