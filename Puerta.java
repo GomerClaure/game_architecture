@@ -9,6 +9,7 @@ public class Puerta {
         this.entornoDestino = entornoDestino;
         this.entornoOrigen = entornoOrigen;
         this.nombreId = nombreId;
+        
     }
     
     // public Puerta(Entorno entornoOrigen,Entorno entornoDestino, int posx, int posy){
