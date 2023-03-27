@@ -1,3 +1,4 @@
+package editor;
 
 public class Ambiente extends Entorno  {
     

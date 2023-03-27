@@ -1,3 +1,4 @@
+package editor;
 public class Puerta {
     private Entorno entornoOrigen;
     private Entorno entornoDestino;

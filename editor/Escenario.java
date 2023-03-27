@@ -1,3 +1,4 @@
+package editor;
 import java.util.ArrayList;
 
 public class Escenario extends Entorno {
