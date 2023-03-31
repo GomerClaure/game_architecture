@@ -1,12 +1,13 @@
 package editor;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Entorno {
     String nombreId;
-    ArrayList<Puerta> puertas;
+    List<Puerta> puertas;
     
-    public Entorno(String nombreId) {
-        this.nombreId = nombreId;
+    public Entorno() {
+        // this.nombreId = nombreId;
         puertas = new ArrayList<>();
         
     }
@@ -19,7 +20,7 @@ public abstract class Entorno {
         return false;
     }
     
-    protected boolean sonDelMismoTipo(ArrayList <Entorno> entornos){
+    protected boolean sonDelMismoTipo(List <Entorno> entornos){
         boolean sonDelMismoTipo = true;
         for (int i = 1; i < entornos.size(); i++) {
             if(entornos.get(i-1).getClass() != entornos.get(i).getClass()){

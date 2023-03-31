@@ -1,10 +1,11 @@
 package editor;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class Editor {
     private Escenario escenarioPrincipal;
-    private HashMap<String,Entorno> almacenTemporal;
+    private Map<String,Entorno> almacenTemporal;
     private String nombreEscenarioPrincipal;
 
     public Editor(){
@@ -57,41 +58,43 @@ public class Editor {
     }
 
     public Entorno getEntorno(){//metodo del inge
-        crearEscenario("escenario1");
-        crearEscenario("escenario2");
-        crearEscenario("escenario3");
-        crearEscenario("escenario4");
+        crearEscenario("plantaBaja");
+        crearEscenario("primer piso");
+        // crearEscenario("escenario2");
+        // crearEscenario("escenario3");
+        // crearEscenario("escenario4");
+        crearAmbiente("690a");
+        crearAmbiente("690b");
+        crearAmbiente("690c");
+        crearAmbiente("690d");
         crearAmbiente("691a");
         crearAmbiente("691b");
         crearAmbiente("691c");
-        crearAmbiente("descanzo");
-        crearAmbiente("patio");
+        crearAmbiente("691d");
+        // crearAmbiente("descanzo");
+        // crearAmbiente("patio");
         crearAmbiente("pasillo");
-        crearAmbiente("ambiente1");
-        crearAmbiente("ambiente2");
-        crearAmbiente("ambiente3");
-        System.out.println(agregarEntorno("escenario1"));
-        System.out.println(agregarEntorno("escenario2"));
-        System.out.println(agregarEntorno("escenario1", "691a"));
-        System.out.println(agregarEntorno("escenario1", "691b"));
-        System.out.println(agregarEntorno("escenario1", "691c"));
-        System.out.println(agregarEntorno("escenario1", "descanzo"));
-        System.out.println(agregarEntorno("escenario1", "patio"));
-        System.out.println(agregarEntorno("escenario1", "pasillo"));
-        System.out.println(agregarEntorno("escenario2","escenario3"));
+        // crearAmbiente("ambiente1");
+        // crearAmbiente("ambiente2");
+        // crearAmbiente("ambiente3");
+        // agregarEntorno("escenario2"));
+        agregarEntorno("plantaBaja");
+        agregarEntorno("plantaBaja", "pasillo");
+        agregarEntorno("plantaBaja", "690a");
+        agregarEntorno("plantaBaja", "690b");
+        agregarEntorno("plantaBaja", "690c");
+        agregarEntorno("plantaBaja", "690d");
+        agregarEntorno("escenario2","escenario3");
 
-        System.out.println(agregarEntorno("691a", "691b"));// no es posible agregar un ambiente dentro de otro
-        System.out.println(agregarEntorno("escenario3","ambiente1"));
-        System.out.println(agregarEntorno("escenario3","ambiente2"));
-        System.out.println(agregarEntorno("escenario1","ambiente3"));// no es posible agregar un ambiente y un escenario a la vez en un escenario
-        System.out.println("AgregarPuertas:");
-        System.out.println(crearPuerta("691a", "pasillo","puerta1"));
-        System.out.println(crearPuerta("pasillo", "691b", "puerta2"));
-        System.out.println(crearPuerta("pasillo", "descanzo", "puerta3"));
-        System.out.println(crearPuerta("691b", "691c", "puerta4"));
-        System.out.println(crearPuerta("691c", "pasillo", "puerta5"));
-        System.out.println(crearPuerta("descanzo", "patio", "puerta6"));
-        System.out.println(crearPuerta("patio", "pasillo", "puerta7"));
+        crearPuerta("690a", "pasillo","p1");
+        crearPuerta("690b", "pasillo","p2");
+        crearPuerta("690c", "pasillo","p3");
+        crearPuerta("690d", "pasillo","p4");
+        crearPuerta( "pasillo","690a","p5");
+        crearPuerta( "pasillo","690b","p6");
+        crearPuerta( "pasillo","690c","p7");
+        crearPuerta( "pasillo","690d","p8");
+        // crearPuerta("690e", "pasillo","puerta1");
         return escenarioPrincipal;
     }
 

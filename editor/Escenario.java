@@ -1,11 +1,13 @@
 package editor;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Escenario extends Entorno {
-    ArrayList <Entorno> entornos;
+    List <Entorno> entornos;
     // ArrayList <Escenario> escenarios;
     public Escenario(String nombreId) {
-        super(nombreId);
+        this.nombreId = nombreId;
+        // super(nombreId);
         entornos = new ArrayList<>();
     }
 

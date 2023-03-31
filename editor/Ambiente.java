@@ -3,7 +3,7 @@ package editor;
 public class Ambiente extends Entorno  {
     
     public Ambiente(String nombreId) {
-        super(nombreId);
+        this.nombreId = nombreId;
     }
 
     public Entorno salirPuerta(String nombreId){
@@ -24,7 +24,7 @@ public class Ambiente extends Entorno  {
     public String getPuertas(){
         String todasLasPuertas = "";
         for (Puerta puerta : puertas) {
-            todasLasPuertas += puerta.toString();
+            todasLasPuertas += "\n"+puerta.toString();
         }
         return todasLasPuertas;
     }

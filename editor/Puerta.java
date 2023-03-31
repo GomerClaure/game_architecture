@@ -30,7 +30,7 @@ public class Puerta {
     }
 
     public boolean estaEnLaPuerta(String nombrePuerta){
-        return nombrePuerta == nombreId;
+        return nombrePuerta.equals(nombreId);
     }
 
     // public boolean estaEnLaPuerta(int posx, int posy){
